@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Challenge Soal 2</title>
+  </head>
+  <body>
+    <script>
+      let output = [];
+
+      function Angka(l, t, numb, visited, last) {
+        if (l == 0 && t == 0) {
+          output.push(numb);
+          for (let i = 0; i < numb.length; i++) {
+            document.write(numb[i] + ' ');
+          }
+          document.write('</br>');
+          return;
+        }
+
+        if (l <= 0 || t <= 0) return;
+
+        for (let i = last; i <= 9; i++) {
+          if (!visited[i]) {
+            visited[i] = true;
+            numb.push(i);
+            Angka(l - 1, t - i, numb, visited, i + 1);
+            numb.pop();
+            visited[i] = false;
+          }
+        }
+      }
+
+      function Kombinasi(l, t) {
+        if (l * 9 < t) {
+          document.write('No combinations');
+          return;
+        }
+        let visited = new Array(10);
+        visited.fill(false);
+
+        let numb = [];
+        Angka(l, t, numb, visited, 1);
+        return;
+      }
+
+      let l = 3,
+        t = 8;
+
+      Kombinasi(l, t);
+    </script>
+  </body>
+</html>

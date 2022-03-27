@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Challenge Soal 1</title>
+  </head>
+  <body>
+    <script>
+      function palindrome(kata) {
+        let panjangKata = kata.length;
+        let Kiri = kata.slice(0, Math.floor(panjangKata / 2));
+        let Kanan = kata
+          .slice(Math.ceil(panjangKata / 2), panjangKata)
+          .split("")
+          .reverse()
+          .join("");
+
+        if (Kiri == Kanan) return true;
+        return false;
+      }
+
+      console.log(palindrome("kasur ini rusak"));
+      console.log(palindrome("ibu ratna antar ubi"));
+      console.log(palindrome("kasur nanaban rusak"));
+    </script>
+  </body>
+</html>
