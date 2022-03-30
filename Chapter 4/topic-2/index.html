@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body>
+    <h1>Aplikasi Ubah Tema</h1>
+
+    <!-- Element with id app -->
+    <div id="app"></div>
+
+    <p class="paragraph">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas harum iste
+      accusamus totam veritatis ipsum dignissimos mollitia, velit ut esse
+      molestiae ab, vero ducimus fuga exercitationem voluptatem architecto, modi
+      fugiat.
+    </p>
+    <p class="paragraph">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum numquam
+      repellendus odit quas tempore ducimus, esse error soluta iure possimus
+      distinctio expedita illo magni eveniet adipisci repellat! Quibusdam, rerum
+      voluptas.
+    </p>
+    <p class="paragraph">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero facere
+      accusantium sunt modi magnam accusamus officia, repellendus amet
+      molestiae, velit placeat nesciunt, sint optio deleniti. Deleniti maiores
+      dolorum ad temporibus.
+    </p>
+    <p class="paragraph">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis sunt
+      accusamus praesentium quis distinctio unde quidem doloremque totam modi
+      iusto alias illum veritatis, consectetur culpa optio nemo, porro animi
+      molestias?
+    </p>
+
+    <div>
+      <label>Background Color</label>
+      <input type="color" id="background-color" />
+      <label>Text Color</label>
+      <input type="color" id="text-color" />
+    </div>
+
+    <!-- JavaScipt code to fill the app id -->
+    <script type="text/javascript">
+      // access the app id
+      var app = document.getElementById("app");
+
+      // Add text inside the app id
+      app.innerHTML = "Hello World";
+
+      // Add css to app id
+      app.style.color = "#cccccc";
+      // app.style.backgroundColor = '#333333';
+
+      // Make document background color dark
+      document.body.style.backgroundColor = "#333333";
+    </script>
+
+    <script type="text/javascript">
+      // access the paragraph class
+      var paragraph = document.getElementsByClassName("paragraph");
+
+      // Add css to paragraph class
+      paragraph[1].style.color = "#cccccc";
+      paragraph[1].style.backgroundColor = "#333333";
+
+      // Make paragraph 3 color dark and background light in 5 seconds
+      setTimeout(function () {
+        paragraph[2].style.color = "#cccccc";
+        paragraph[2].style.backgroundColor = "#333333";
+      }, 5000);
+    </script>
+
+    <script type="text/javascript">
+      // add element with id title
+      var title = document.createElement("h1");
+
+      // add text inside title
+      title.textContent = "Add element from DOM";
+
+      title.style.color = "#cccccc";
+      title.style.backgroundColor = "#333333";
+
+      // add title to body
+      document.body.append(title);
+
+      // remove title after 3 seconds
+      setTimeout(() => {
+        title.remove();
+      }, 3000);
+    </script>
+
+    <script type="text/javascript">
+        // get element with id background-color
+        var backgroundColor = document.getElementById("background-color");
+        // get element with id text-color
+        var textColor = document.getElementById("text-color");
+
+        backgroundColor.addEventListener('change', function () {
+            document.body.style.backgroundColor = backgroundColor.value;
+        });
+
+        textColor.addEventListener('change', function () {
+            document.body.style.color = textColor.value;
+        });
+    </script>
+  </body>
+</html>
