@@ -17,7 +17,13 @@ function getHTML(htmlFileName) {
   the function will be called
 */
 function onRequest(req, res) {
-  if (req.url === "/") {
+  if (
+    req.url === "/" ||
+    req.url.includes("driver") ||
+    req.url.includes("date") ||
+    req.url.includes("time") ||
+    req.url.includes("capacity")
+  ) {
     const html = getHTML("index.example.html"); // get html file
     res.writeHead(200, { "Content-Type": "text/html" });
     res.end(html);
