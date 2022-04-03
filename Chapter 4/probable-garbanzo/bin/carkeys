@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+const [ car ] = require("../data/cars.min.json")
+console.log(Object.keys(car).join(', '))

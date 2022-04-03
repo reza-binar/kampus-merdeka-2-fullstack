@@ -1,0 +1,83 @@
+#!/usr/bin/env node
+
+const fs = require("fs");
+const path = require("path");
+const cars = require("../data/cars.original.json");
+
+const ALLOWED_CAPACITY = [
+  2,
+  4,
+  6
+];
+
+const DATA_DIRECTORY = path.join(__dirname, '../data');
+const MIN_OUTPUT_PATH = path.join(DATA_DIRECTORY, 'cars.min.json');
+const OUTPUT_PATH = path.join(DATA_DIRECTORY, 'cars.json');
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getRandomCapacity() {
+  const ridx = Math.floor(Math.random() * ALLOWED_CAPACITY.length)
+  return ALLOWED_CAPACITY[ridx]
+}
+
+function getCarImage(idx) {
+  const imageFile = `car${(idx + 1).toLocaleString('en-US', { minimumIntegerDigits: 2 })}.min.jpg` 
+  return `./images/${imageFile}`;
+}
+
+function generateDescription(list) {
+  let description = '';
+  let descriptionLength = 0;
+  let i = 0;
+
+  while (descriptionLength < 124 && i < list.length) {
+    const sentence = list[i];
+
+    i++
+
+    if ((descriptionLength + sentence.length) > 124)
+      return description;
+
+    description = description.concat(" ", sentence, ".");
+    descriptionLength += sentence.length;
+  }
+
+  return description;
+}
+
+function getRandomPrice() {
+  const head = getRandomInt(1, 10);
+
+  return head * 100000;
+}
+
+const ccars = cars.map((car, idx) => {
+  const capacity = getRandomCapacity();
+  const description = generateDescription([...car.specs, ...car.options]);
+  const rentPerDay = getRandomPrice();
+  const image = getCarImage(idx)
+
+  return {
+    id: car.id,
+    plate: car.plate,
+    manufacture: car.manufacture,
+    model: car.model,
+    image,
+    rentPerDay,
+    capacity,
+    description,
+    availableAt: new Date(),
+    ...car,
+  }
+})
+
+const minCarsJSON = JSON.stringify(ccars);
+const carsJSON = JSON.stringify(ccars, null, 2);
+
+fs.writeFileSync(MIN_OUTPUT_PATH, minCarsJSON);
+fs.writeFileSync(OUTPUT_PATH, carsJSON);
