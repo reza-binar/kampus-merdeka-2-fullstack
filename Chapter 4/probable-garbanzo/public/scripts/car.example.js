@@ -39,14 +39,31 @@ class Car {
     this.availableAt = availableAt;
   }
 
+  formatRupiah = (money) => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
+    }).format(money);
+  };
+
   render() {
     return `
-      <p>id: <b>${this.id}</b></p>
-      <p>plate: <b>${this.plate}</b></p>
-      <p>manufacture: <b>${this.manufacture}</b></p>
-      <p>model: <b>${this.model}</b></p>
-      <p>available at: <b>${this.availableAt}</b></p>
-      <img src="${this.image}" alt="${this.manufacture}" width="64px">
+      <div class="card h-100">
+        <img src="${
+          this.image
+        }" class="card-img-top" style="object-fit: cover; height: 300px" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${this.manufacture} ${this.model}</h5>
+          <p class="card-text fw-bold">${this.formatRupiah(
+            this.rentPerDay
+          )} / hari</p>
+          <p class="card-text text-truncate">${this.description}</p>
+          <div class="d-grid gap-2">
+            <a href="#" class="btn btn-primary">Pilih Mobil</a>
+          </div>
+        </div>
+      </div>
     `;
   }
 }

@@ -3,6 +3,8 @@ const fs = require("fs"); // import file system module
 const path = require("path"); // import part module
 const mime = require("mime"); // import mime module
 
+const cars = require("../data/cars.min.json"); // import cars data from cars.min.json
+
 const { PORT = 8000 } = process.env; // make port for server
 const PUBLIC_DIRECTORY = path.join(__dirname, "..", "public"); // set public directory
 
@@ -22,7 +24,7 @@ function onRequest(req, res) {
     req.url.includes("driver") ||
     req.url.includes("date") ||
     req.url.includes("time") ||
-    req.url.includes("capacity")
+    req.url.includes("passanger")
   ) {
     const html = getHTML("index.example.html"); // get html file
     res.writeHead(200, { "Content-Type": "text/html" });
@@ -39,6 +41,10 @@ function onRequest(req, res) {
     const mimeType = mime.getType(filePath); // get mime type
     res.writeHead(200, { "Content-Type": mimeType });
     fileStream.pipe(res);
+  } else if (req.url === "/api/v1/cars") {
+    res.setHeader("Content-Type", "application/json");
+    res.writeHead(200);
+    res.end(JSON.stringify(cars));
   } else {
     res.writeHead(404, { "Content-Type": "text/html" });
     res.end("No Page Found");
