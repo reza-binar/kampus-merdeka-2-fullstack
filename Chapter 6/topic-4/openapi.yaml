@@ -1,0 +1,112 @@
+openapi: 3.0.0
+info:
+  title: Authentication API Docs
+  description: API Docs for Authentication & Authorization
+  version: 0.1.9
+servers:
+  - url: https://production.km2.id
+    description: Main (production) server
+  - url: https://staging.km2.id
+    description: Internal staging server for testing
+  - url: http://localhost:3000
+    description: Internal development server
+paths:
+  /api/v1/register:
+    post:
+      summary: Register User
+      description: This is endpoint to register the user.
+      requestBody: 
+        description: Email must be filled and password must be more than 8 characters.
+        content:
+          application/json:
+            schema: 
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "fahmialfareza@email.com"
+                  description: Email must be valid
+                password:
+                  type: string
+                  example: "password"
+                  description: Password must be more than 8 characters.
+          application/x-www-form-urlencoded:
+            schema: 
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "fahmialfareza@email.com"
+                  description: Email must be valid
+                password:
+                  type: string
+                  example: "password"
+                  description: Password must be more than 8 characters.
+        required: true
+      responses:
+        '200':
+          description: Response when success register the user
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  token: 
+                    type: string
+                    example: euyu218730219jdnasdksladm0812eidk21po
+        '401':
+          description: Response when error register the user
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Token Invalid"
+                    
+  /api/v1/login:
+    post:
+      summary: Login User
+      description: This is endpoint to login the user.
+      requestBody: 
+        description: "This body is required"
+        content:
+          application/json:
+            schema: 
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "fahmialfareza@email.com"
+                password:
+                  type: string
+                  example: "password"
+        required: true
+      responses:
+        '200':
+          description: Response when success login the user
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  token: 
+                    type: string
+                    example: euyu218730219jdnasdksladm0812eidk21po
+        '400':
+          description: Response when error login the user
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Email not valid"

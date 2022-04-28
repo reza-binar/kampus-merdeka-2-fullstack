@@ -1,0 +1,12 @@
+{
+  "name": "topic-4",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.0",
+    "redoc-express": "^1.0.0",
+    "swagger-ui-express": "^4.3.0",
+    "yamljs": "^0.3.0"
+  }
+}
