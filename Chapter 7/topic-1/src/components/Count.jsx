@@ -1,7 +1,8 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 
 function Count(props) {
-  const { count, logo, handleClick } = props;
+  const { children, count, logo, handleClick } = props;
 
   return (
     <>
@@ -10,10 +11,20 @@ function Count(props) {
       <div>
         <h4>Total Click</h4>
         <h1>{count}</h1>
-        <button className="App-button" onClick={handleClick}>
+        <Button
+          variant="primary"
+          onClick={handleClick}
+          // Inline Style
+          style={{
+            marginTop: "20px",
+            marginBottom: "20px",
+          }}
+        >
           Click
-        </button>
+        </Button>
       </div>
+
+      <div>{children}</div>
     </>
   );
 }
