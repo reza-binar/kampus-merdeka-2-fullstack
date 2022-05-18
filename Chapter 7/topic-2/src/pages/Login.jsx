@@ -35,9 +35,8 @@ const Login = (props) => {
       if (result.token) {
         localStorage.setItem("token", result.token);
         setToken(result.token);
-        props.history.push("/");
       } else {
-        alert(result);
+        alert("Something went wrong!");
       }
     }
   };
@@ -62,6 +61,7 @@ const Login = (props) => {
                       placeholder="Enter email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      required
                     />
                     <Form.Text className="text-muted">
                       We'll never share your email with anyone else.
@@ -75,6 +75,7 @@ const Login = (props) => {
                       placeholder="Password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      required
                     />
                   </Form.Group>
 
