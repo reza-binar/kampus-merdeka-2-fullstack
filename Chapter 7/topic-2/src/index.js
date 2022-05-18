@@ -7,6 +7,8 @@ import App from "./App";
 import About from "./pages/About";
 import Posts from "./pages/Posts";
 import NotFound from "./pages/404.jsx";
+import FileProcessing from "./pages/FileProcessing";
+import Login from "./pages/Login";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -16,6 +18,9 @@ root.render(
       <Route path="/" element={<App />} />
       <Route path="/about" element={<About />} />
       <Route path="/posts" element={<Posts />} />
+      <Route path="/file-processing" element={<FileProcessing />} />
+
+      <Route path="/login" element={<Login />} />
 
       {/* 404 Page */}
       <Route path="*" element={<NotFound />} />
