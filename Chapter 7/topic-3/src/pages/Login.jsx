@@ -50,7 +50,28 @@ const Login = (props) => {
   };
 
   const login = useGoogleLogin({
-    onSuccess: (tokenResponse) => console.log(tokenResponse),
+    onSuccess: async (tokenResponse) => {
+      const data = {
+        access_token: tokenResponse.access_token,
+      };
+      const response = await fetch("http://localhost:8000/api/v1/auth/google", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const result = await response.json();
+      if (result.token) {
+        localStorage.setItem("token", result.token);
+        setToken(result.token);
+      } else {
+        alert("Something went wrong!");
+      }
+    },
+    onError: (error) => {
+      alert(error);
+    },
   });
 
   return (
