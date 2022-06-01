@@ -1,0 +1,2 @@
+File yang ada .spec.js di dalam folder app, itu isinya Unit Test.
+Sedangkan yang .test.js di dalam folder **tests**, itu isinya Integration Test
