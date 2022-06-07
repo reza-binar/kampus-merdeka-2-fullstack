@@ -19,6 +19,6 @@
     "start": "node bin/www",
     "develop": "npx nodemon -q bin/www",
     "build": "npx sequelize db:migrate",
-    "test": "NODE_ENV=test jest"
+    "test": "NODE_ENV=test jest --coverage"
   }
 }
