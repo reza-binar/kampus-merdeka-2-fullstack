@@ -1,6 +1,8 @@
 const path = require("path");
 const DB_TEST_FILE_PATH = path.join(__dirname, "../db/test.sqlite");
 
+const { DB_USERNAME, DB_PASSWORD, DB_NAME, DB_HOST } = process.env;
+
 module.exports = {
   development: {
     username: DB_USERNAME,
