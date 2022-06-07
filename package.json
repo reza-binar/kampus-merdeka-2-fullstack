@@ -11,10 +11,13 @@
   },
   "devDependencies": {
     "jest": "^28.1.0",
-    "supertest": "^6.2.3"
+    "supertest": "^6.2.3",
+    "nodemon": "^2.0.15"
   },
   "scripts": {
     "start": "node bin/www",
-    "test": "jest"
+    "develop": "npx nodemon -q bin/www",
+    "build": "npx sequelize db:migrate",
+    "test": "NODE_ENV=test jest"
   }
 }
