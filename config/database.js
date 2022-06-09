@@ -1,3 +1,5 @@
+require("dotenv").config(__dirname + "/../.env");
+
 const path = require("path");
 const DB_TEST_FILE_PATH = path.join(__dirname, "../db/test.sqlite");
 
