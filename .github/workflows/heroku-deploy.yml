@@ -1,19 +1,24 @@
+# Name of Workflow
 name: Heroku CI/CD
 
+# Will be run when someone push to master
 on:
   push:
     branches:
       - master
 
+# Jobs in the workflow
 jobs:
+  # Test
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: yarn install
-      - run: yarn test
+      - uses: actions/checkout@v2 # We will get the code from GitHub
+      - run: yarn install # Install dependencies
+      - run: yarn test # Run tests
+  # Build to staging
   deploy-staging:
-    needs: [test]
+    needs: [test] # We need to run the test first
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
