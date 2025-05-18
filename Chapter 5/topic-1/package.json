@@ -12,5 +12,9 @@
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.3"
+  },
+  "volta": {
+    "node": "18.16.0",
+    "pnpm": "8.6.0"
   }
 }

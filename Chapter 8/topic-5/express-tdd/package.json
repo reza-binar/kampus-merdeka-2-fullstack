@@ -16,5 +16,9 @@
   "scripts": {
     "start": "node bin/www",
     "test": "jest"
+  },
+  "volta": {
+    "node": "14.19.0",
+    "pnpm": "7.0.0"
   }
 }

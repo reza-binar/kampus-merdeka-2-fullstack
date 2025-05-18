@@ -9,5 +9,9 @@
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^8.5.8"
+  },
+  "volta": {
+    "node": "18.16.0",
+    "pnpm": "8.6.0"
   }
 }

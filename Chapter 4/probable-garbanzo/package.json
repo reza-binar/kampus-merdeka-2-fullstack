@@ -11,5 +11,9 @@
   },
   "dependencies": {
     "mime": "^3.0.0"
+  },
+  "volta": {
+    "node": "18.16.0",
+    "pnpm": "8.6.0"
   }
 }
